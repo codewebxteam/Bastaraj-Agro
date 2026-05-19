@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,8 +18,8 @@ const Footer = () => {
   return (
     <footer className="w-full bg-[#0a0f0d] text-white py-14 mt-auto relative border-t border-white/10 overflow-hidden">
       
-      {/* Subtle Premium Glow Line at the top center of the footer */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-[#1AFF00]/40 to-transparent"></div>
+      {/* Subtle Premium Glow Line at the top center - Updated to Primary Green #41A61D */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-[#41A61D]/40 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -43,7 +45,8 @@ const Footer = () => {
 
           {/* FIXED: Column 2: Navigation Links Hub (3 Columns) */}
           <div className="md:col-span-3">
-            <h4 className="text-base font-black mb-6 text-gray-100 border-b-2 border-[#1AFF00]/50 pb-1.5 inline-block tracking-widest uppercase text-xs">
+            {/* Header border styled with Primary #41A61D */}
+            <h4 className="text-base font-black mb-6 text-gray-100 border-b-2 border-[#41A61D]/50 pb-1.5 inline-block tracking-widest uppercase text-xs">
               Quick Navigation
             </h4>
             <ul className="space-y-3 flex flex-col">
@@ -51,9 +54,10 @@ const Footer = () => {
                 <li key={idx}>
                   <Link 
                     href={link.path}
-                    className="text-gray-400 hover:text-[#1AFF00] text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 group"
+                    className="text-gray-400 active:text-[#41A61D] text-sm font-semibold transition-colors duration-200 flex items-center gap-1.5 group"
                   >
-                    <span className="w-1 h-1 rounded-full bg-[#1AFF00] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    {/* Dot pointer indicator utilizes Primary brand hex */}
+                    <span className="w-1 h-1 rounded-full bg-[#41A61D]"></span>
                     {link.name}
                   </Link>
                 </li>
@@ -63,37 +67,38 @@ const Footer = () => {
 
           {/* FIXED: Column 3: Corporate Contact Directory (5 Columns) */}
           <div className="md:col-span-5 space-y-4">
-            <h4 className="text-base font-black mb-2 text-gray-100 border-b-2 border-[#1AFF00]/50 pb-1.5 inline-block tracking-widest uppercase text-xs">
+            {/* Title border highlighted in Secondary Orange #E36911 for structural contrast */}
+            <h4 className="text-base font-black mb-2 text-gray-100 border-b-2 border-[#E36911]/50 pb-1.5 inline-block tracking-widest uppercase text-xs">
               Contact Us
             </h4>
             
-            <div className="flex items-start gap-2.5 text-gray-400 text-sm transition-colors hover:text-gray-200 font-medium">
-              <FiMapPin className="text-[#1AFF00] shrink-0 mt-0.5 text-base" />
+            <div className="flex items-start gap-2.5 text-gray-400 text-sm font-medium">
+              <FiMapPin className="text-[#41A61D] shrink-0 mt-0.5 text-base" />
               <span>Mahatma Gandhi Industrial Park, Sarona, Kanker, Chhattisgarh</span>
             </div>
 
             {/* FIXED: Phone anchors bound with dialable structural tel nodes */}
-            <div className="flex items-center gap-2.5 text-gray-400 text-sm transition-colors hover:text-gray-200 font-medium">
-              <FiPhone className="text-[#1AFF00] shrink-0 text-base" />
+            <div className="flex items-center gap-2.5 text-gray-400 text-sm font-medium">
+              <FiPhone className="text-[#41A61D] shrink-0 text-base" />
               <div className="flex flex-wrap gap-x-2 gap-y-1">
-                <a href="tel:+919301381805" className="hover:text-[#1AFF00] transition-colors font-bold">+91 9301381805</a>
+                <a href="tel:+919301381805" className="active:text-[#41A61D] transition-colors font-bold">+91 9301381805</a>
                 <span className="text-gray-600">|</span>
-                <a href="tel:+917898860613" className="hover:text-[#1AFF00] transition-colors font-bold">+91 7898860613</a>
+                <a href="tel:+917898860613" className="active:text-[#41A61D] transition-colors font-bold">+91 7898860613</a>
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5 text-gray-400 text-sm transition-colors hover:text-gray-200 font-medium">
-              <FiMail className="text-[#1AFF00] shrink-0 text-base" />
-              <a href="mailto:bastarraj01@gmail.com" className="hover:text-[#1AFF00] transition-colors font-bold">bastarraj01@gmail.com</a>
+            <div className="flex items-center gap-2.5 text-gray-400 text-sm font-medium">
+              <FiMail className="text-[#41A61D] shrink-0 text-base" />
+              <a href="mailto:bastarraj01@gmail.com" className="active:text-[#41A61D] transition-colors font-bold">bastarraj01@gmail.com</a>
             </div>
 
-            {/* Industry Trust and Certification Badges Integrated Cleanly */}
+            {/* Industry Trust and Certification Badges - Clean static viewports optimized for mobile grids */}
             <div className="pt-2">
               <div className="flex flex-wrap gap-2">
-                <span className="bg-white/5 border border-white/10 text-gray-400 text-[10px] font-black tracking-wider px-3 py-1.5 rounded-xl backdrop-blur-md hover:border-[#1AFF00] hover:text-[#1AFF00] hover:shadow-[0_0_15px_rgba(26,255,0,0.15)] transition-all duration-300 cursor-default">FSSAI</span>
-                <span className="bg-white/5 border border-white/10 text-gray-400 text-[10px] font-black tracking-wider px-3 py-1.5 rounded-xl backdrop-blur-md hover:border-[#1AFF00] hover:text-[#1AFF00] hover:shadow-[0_0_15px_rgba(26,255,0,0.15)] transition-all duration-300 cursor-default">STARTUP INDIA</span>
-                <span className="bg-white/5 border border-white/10 text-gray-400 text-[10px] font-black tracking-wider px-3 py-1.5 rounded-xl backdrop-blur-md hover:border-[#1AFF00] hover:text-[#1AFF00] hover:shadow-[0_0_15px_rgba(26,255,0,0.15)] transition-all duration-300 cursor-default">ISO 9001:2015</span>
-                <span className="bg-white/5 border border-white/10 text-gray-400 text-[10px] font-black tracking-wider px-3 py-1.5 rounded-xl backdrop-blur-md hover:border-[#1AFF00] hover:text-[#1AFF00] hover:shadow-[0_0_15px_rgba(26,255,0,0.15)] transition-all duration-300 cursor-default">MSME</span>
+                <span className="bg-white/5 border border-white/10 text-gray-400 text-[10px] font-black tracking-wider px-3 py-1.5 rounded-xl backdrop-blur-md cursor-default">FSSAI</span>
+                <span className="bg-white/5 border border-white/10 text-gray-400 text-[10px] font-black tracking-wider px-3 py-1.5 rounded-xl backdrop-blur-md cursor-default">STARTUP INDIA</span>
+                <span className="bg-white/5 border border-white/10 text-gray-400 text-[10px] font-black tracking-wider px-3 py-1.5 rounded-xl backdrop-blur-md cursor-default">ISO 9001:2015</span>
+                <span className="bg-white/5 border border-white/10 text-gray-400 text-[10px] font-black tracking-wider px-3 py-1.5 rounded-xl backdrop-blur-md cursor-default">MSME</span>
               </div>
             </div>
           </div>
@@ -112,7 +117,7 @@ const Footer = () => {
               href="https://codewebx.in" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="font-black text-[#1AFF00] tracking-wider drop-shadow-[0_0_8px_rgba(26,255,0,0.3)] hover:text-white transition-colors duration-300 flex items-center gap-0.5"
+              className="font-black text-[#41A61D] tracking-wider active:text-[#E36911] transition-colors duration-200 flex items-center gap-0.5"
             >
               CodeWebX Technologies <FiExternalLink className="text-[10px]" />
             </a>

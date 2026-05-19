@@ -1,9 +1,13 @@
+"use client";
+
 import React from 'react';
 import HeroSection from '@/components/home/HeroSection';
 import KeyStats from '@/components/home/KeyStats';
-import ProfitCalculator from '@/components/home/ProfitCalculator';
 import ProcessTimeline from '@/components/home/ProcessTimeline';
 import ProductInventory from '@/components/home/ProductInventory';
+import Testimonials from '@/components/home/Testimonials';
+import OrderForm from '@/components/home/OrderForm';
+import ProfitCalculator from '@/components/home/ProfitCalculator';
 
 export default function Home() {
   return (
@@ -24,22 +28,32 @@ export default function Home() {
         <KeyStats />
       </div>
 
-      {/* 3. Interactive Profit Calculator: The core dynamic feature */}
-      {/* Removed bg-white and wrapper padding. The component itself will handle the dark theme UI. */}
-      <section id="calculator" className="w-full">
-        <ProfitCalculator />
-      </section>
-
-      {/* 4. Process Timeline: Visual breakdown of the agricultural workflow */}
+      {/* 3. Process Timeline: Visual breakdown of the agricultural workflow */}
       {/* Removed bg-gray-50 */}
       <section id="process" className="w-full">
         <ProcessTimeline />
       </section>
 
-      {/* 5. Product Inventory: Catalog grid with direct WhatsApp order */}
+      {/* 4. Product Inventory: Catalog grid with direct WhatsApp order */}
       {/* Removed bg-white */}
-      <section id="inventory" className="w-full pb-20">
+      <section id="inventory" className="w-full">
         <ProductInventory />
+      </section>
+
+      {/* 5. Testimonials Section: User reviews and social proof build */}
+      <section id="testimonials" className="w-full">
+        <Testimonials />
+      </section>
+
+      {/* 6. Order Form: Dynamic Lead capture mechanism */}
+      <section id="order-form" className="w-full">
+        <OrderForm />
+      </section>
+
+      {/* 7. Interactive Profit Calculator: Shifting to the very bottom to lock deals */}
+      {/* Removed bg-white and wrapper padding. The component itself will handle the dark theme UI. */}
+      <section id="calculator" className="w-full pb-20">
+        <ProfitCalculator />
       </section>
 
     </main>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { FiMapPin, FiActivity, FiShield, FiTruck, FiCheckCircle, FiArrowUpRight } from 'react-icons/fi';
+import { FiMapPin, FiActivity, FiShield, FiTruck, FiCheckCircle } from 'react-icons/fi';
 
 const ServicesPage = () => {
   const solutions = [
@@ -39,20 +39,21 @@ const ServicesPage = () => {
   return (
     <main className="w-full min-h-screen bg-[#FAFAFA] text-gray-950 antialiased overflow-hidden pb-32">
       
-      {/* Background Grid Layer */}
-      <div className="absolute inset-0 z-0 opacity-[0.02]" style={{ backgroundImage: 'linear-gradient(to right, #00a63e 1px, transparent 1px), linear-gradient(to bottom, #00a63e 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+      {/* Background Grid Layer (Clean layout pattern) */}
+      <div className="absolute inset-0 z-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
 
       {/* HERO SECTION */}
       <section className="relative w-full pt-12 pb-14 px-4 sm:px-6 lg:px-8 z-10 max-w-7xl mx-auto mt-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <div className="lg:col-span-5 space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00a63e]/10 border border-[#00a63e]/20 text-[#00a63e] text-xs font-bold tracking-widest uppercase shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#41A61D]/10 border border-[#41A61D]/20 text-[#41A61D] text-xs font-bold tracking-widest uppercase shadow-sm">
               Our Services
             </div>
+            {/* FIXED: Swapped text gradient with solid primary brand green #41A61D */}
             <h1 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight leading-none">
               Complete Farming <br className="hidden lg:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00a63e] to-[#4ade80]">& Support</span>
+              <span className="text-[#41A61D]">& Support</span>
             </h1>
             <p className="text-sm sm:text-base text-gray-500 font-medium leading-relaxed max-w-lg mx-auto lg:mx-0">
               We provide step-by-step guidance, certified saplings, safe legal contracts, and total crop care until harvest time.
@@ -61,21 +62,21 @@ const ServicesPage = () => {
             <div className="flex flex-wrap justify-center lg:justify-start gap-2 pt-2">
               {['Soil Testing', 'Legal Guarantee', 'Full Logistics'].map((tag, idx) => (
                 <span key={idx} className="inline-flex items-center gap-1 text-[10px] font-bold text-gray-700 bg-white border border-gray-200 shadow-sm px-3 py-1.5 rounded-xl">
-                  <FiCheckCircle className="text-[#00a63e]" /> {tag}
+                  <FiCheckCircle className="text-[#41A61D]" /> {tag}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Right Image (img1.webp) */}
-          <div className="lg:col-span-7 w-full h-[280px] sm:h-[400px] relative rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,166,62,0.08)] border border-white bg-gradient-to-tr from-green-50 to-white group">
+          {/* Right Image (img3.webp) */}
+          <div className="lg:col-span-7 w-full h-[280px] sm:h-[400px] relative rounded-[2.5rem] overflow-hidden shadow-md border border-gray-200 bg-white">
             <Image 
               src="/img3.webp" 
               alt="Bastarraj Farming Work" 
               fill 
               quality={100}
               priority={true}
-              className="object-contain object-center scale-95 group-hover:scale-100 transition-transform duration-700 ease-out"
+              className="object-contain object-center scale-95" 
               unoptimized={true}
             />
           </div>
@@ -87,36 +88,39 @@ const ServicesPage = () => {
       <section className="w-full py-10 px-4 sm:px-6 lg:px-8 z-10 relative max-w-5xl mx-auto">
         <div className="mb-10 text-center md:text-left">
           <h2 className="text-xl font-black text-gray-900 uppercase tracking-widest flex items-center gap-2 justify-center md:justify-start">
-            <span className="w-5 h-[2px] bg-[#00a63e]"></span> How We Work
+            <span className="w-5 h-[2px] bg-[#41A61D]"></span> How We Work
           </h2>
         </div>
 
-        <div className="w-full bg-white/60 backdrop-blur-xl border border-gray-200/60 rounded-[2.5rem] overflow-hidden shadow-[0_15px_40px_-20px_rgba(0,0,0,0.03)]">
+        <div className="w-full bg-white border border-gray-200 rounded-[2.5rem] overflow-hidden shadow-md">
           {solutions.map((item, index) => (
             <div 
               key={item.id}
-              className={`group w-full grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-0 p-6 sm:p-8 items-center border-b border-gray-100 transition-all duration-300 hover:bg-white relative overflow-hidden ${
+              className={`w-full grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-0 p-6 sm:p-8 items-center border-b border-gray-200 bg-white relative overflow-hidden ${
                 index === solutions.length - 1 ? 'border-none' : ''
               }`}
             >
-              <div className="absolute top-0 left-0 w-[4px] h-full bg-[#00a63e] transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+              {/* Static sidebar block marker using Primary Green */}
+              <div className="absolute top-0 left-0 w-[4px] h-full bg-[#41A61D]"></div>
 
               <div className="md:col-span-3 flex items-center gap-4">
-                <span className="text-3xl font-black text-gray-200 group-hover:text-[#00a63e]/20 tracking-tight transition-colors duration-300">
+                {/* ID Counter highlighted cleanly using Primary Green #41A61D */}
+                <span className="text-3xl font-black text-[#41A61D]/20 tracking-tight">
                   {item.id}
                 </span>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-bold text-gray-400 group-hover:text-gray-500 uppercase tracking-widest">
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
                     Step Phase
                   </span>
-                  <span className="inline-block text-[10px] font-bold uppercase text-[#00a63e] bg-[#00a63e]/5 border border-[#00a63e]/10 px-2 py-0.5 rounded mt-1 w-max">
+                  {/* Switched text token focus to Secondary Orange #E36911 for structural pop */}
+                  <span className="inline-block text-[10px] font-bold uppercase text-[#E36911] bg-[#E36911]/5 border border-[#E36911]/10 px-2 py-0.5 rounded mt-1 w-max">
                     {item.tag}
                   </span>
                 </div>
               </div>
 
               <div className="md:col-span-7 space-y-1">
-                <h3 className="text-lg font-black text-gray-900 group-hover:text-[#00a63e] transition-colors duration-200 tracking-tight">
+                <h3 className="text-lg font-black text-gray-900 tracking-tight">
                   {item.title}
                 </h3>
                 <p className="text-gray-500 text-xs sm:text-sm font-medium leading-relaxed pr-4">
@@ -124,9 +128,10 @@ const ServicesPage = () => {
                 </p>
               </div>
 
-              <div className="md:col-span-2 flex items-center justify-start md:justify-end gap-3 text-gray-300 group-hover:text-[#00a63e] transition-all duration-300">
-                <div className="p-3 bg-gray-50 group-hover:bg-[#00a63e]/10 border border-gray-100 rounded-2xl shadow-sm">
-                  <item.icon className="text-lg text-gray-400 group-hover:text-[#00a63e] transition-colors" />
+              <div className="md:col-span-2 flex items-center justify-start md:justify-end gap-3">
+                {/* Icon wrapper optimized with crisp brand borders */}
+                <div className="p-3 bg-gray-50 border border-gray-200 rounded-2xl shadow-sm">
+                  <item.icon className="text-lg text-[#41A61D]" />
                 </div>
               </div>
 
@@ -135,7 +140,7 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* FOLIAGE BASE BACKGROUND (img2.webp) */}
+      {/* FOLIAGE BASE BACKGROUND */}
       <div className="absolute bottom-0 left-0 w-full h-[250px] md:h-[350px] z-0 pointer-events-none opacity-[0.25] image-render-crisp">
         <Image 
           src="/img2.webp" 

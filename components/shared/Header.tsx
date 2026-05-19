@@ -61,7 +61,7 @@ const Header = () => {
               {/* FIXED: Added clear corporate premium brand name text tracking structure */}
               <Link href="/" className="flex flex-col justify-center select-none">
                 <span className="text-xl font-black text-gray-900 tracking-tight leading-none">
-                  Bastarraj <span className="text-[#00a63e]">Agro</span>
+                  Bastarraj <span className="text-[#41A61D]">Agro</span>
                 </span>
                 <span className="text-[10px] font-bold text-gray-400 tracking-widest uppercase mt-0.5">
                   Pvt. Ltd.
@@ -75,7 +75,7 @@ const Header = () => {
                 <Link 
                   key={link.name} 
                   href={link.path} 
-                  className="text-gray-900 hover:text-[#00a63e] font-bold transition-colors duration-200 text-sm tracking-wide"
+                  className="text-gray-900 active:text-[#41A61D] font-bold transition-colors duration-200 text-sm tracking-wide"
                 >
                   {link.name}
                 </Link>
@@ -85,19 +85,19 @@ const Header = () => {
             {/* Desktop Action & Mobile Call Layout Context */}
             <div className="flex items-center">
               
-              {/* FIXED: Removed the Language Toggle. Shifted Call Icon cleanly to the right side with automated dialer prompt link */}
+              {/* FIXED MOBILE ONLY: Shifted Call Icon cleanly to the right side with automated dialer prompt link (#41A61D) */}
               <a 
                 href="tel:+917999618106" 
-                className="md:hidden flex items-center justify-center w-11 h-11 rounded-full bg-[#1AFF00] text-gray-900 shadow-md active:scale-90 transition-transform duration-200 ml-auto"
+                className="md:hidden flex items-center justify-center w-11 h-11 rounded-full bg-[#41A61D] text-white shadow-md active:scale-90 transition-transform duration-200 ml-auto"
                 aria-label="Call Now"
               >
                 <FiPhoneCall className="text-lg animate-pulse" />
               </a>
               
-              {/* Desktop Call Now Trigger Button */}
+              {/* Desktop Call Now Trigger Button - Solid Primary Color without dynamic gradient hover */}
               <a 
-                href="tel:+919301381806" 
-                className="hidden md:flex bg-[#1AFF00] hover:bg-gradient-to-r hover:from-[#1AFF00] hover:to-[#55ff33] text-gray-900 px-6 py-2 rounded-full font-extrabold hover:shadow-[0_0_20px_rgba(26,255,0,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 shadow-md text-sm"
+                href="tel:+917999618106" 
+                className="hidden md:flex bg-[#41A61D] text-white px-6 py-2 rounded-full font-extrabold active:scale-95 shadow-md text-sm transition-transform duration-200"
               >
                 Call Now
               </a>
@@ -126,9 +126,10 @@ const Header = () => {
             <Link 
               key={item.label} 
               href={item.href} 
-              className="flex flex-col items-center w-1/5 text-gray-600 hover:text-[#00a63e] active:text-[#00a63e] transition-colors"
+              className="flex flex-col items-center w-1/5 text-gray-600 active:text-[#41A61D] transition-colors duration-150"
             >
               <item.icon className="text-[22px] mb-1" />
+              {/* Active highlights and labels text config updated */}
               <span className="text-[9px] font-extrabold tracking-tight">{item.label}</span>
             </Link>
           ))}

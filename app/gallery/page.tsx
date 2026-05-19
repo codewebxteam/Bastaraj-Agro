@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { FiImage, FiGrid, FiCamera, FiCheckCircle } from 'react-icons/fi';
+import { FiImage, FiCamera, FiCheckCircle } from 'react-icons/fi';
 
 const GalleryPage = () => {
   // Simple category filtering state
@@ -28,17 +28,18 @@ const GalleryPage = () => {
   return (
     <main className="w-full min-h-screen bg-[#FAFAFA] text-gray-950 antialiased overflow-hidden pb-32">
       
-      {/* Background Micro Grid Layer */}
-      <div className="absolute inset-0 z-0 opacity-[0.02]" style={{ backgroundImage: 'linear-gradient(to right, #00a63e 1px, transparent 1px), linear-gradient(to bottom, #00a63e 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+      {/* Background Micro Grid Layer (Gray layout dots for clear look) */}
+      <div className="absolute inset-0 z-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
 
       {/* STAGE 1: CLEAN HEADER */}
       <section className="relative w-full pt-12 pb-10 px-4 sm:px-6 lg:px-8 z-10 max-w-7xl mx-auto mt-6 text-center">
         <div className="space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00a63e]/10 border border-[#00a63e]/20 text-[#00a63e] text-xs font-bold tracking-widest uppercase shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#41A61D]/10 border border-[#41A61D]/20 text-[#41A61D] text-xs font-bold tracking-widest uppercase shadow-sm">
             <FiImage className="animate-pulse" /> Media Hub
           </div>
+          {/* FIXED: Removed Text Gradient, swapped to solid brand green #41A61D */}
           <h1 className="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight leading-none">
-            Our Plantation <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00a63e] to-[#4ade80]">Gallery</span>
+            Our Plantation <span className="text-[#41A61D]">Gallery</span>
           </h1>
           <p className="text-sm sm:text-base text-gray-500 font-medium max-w-xl mx-auto leading-relaxed">
             Real pictures from our live sites, tree growth cycles, and certified agro-forestry project locations.
@@ -53,10 +54,10 @@ const GalleryPage = () => {
             <button
               key={cat}
               onClick={() => setActiveFilter(cat)}
-              className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider border transition-all duration-300 whitespace-nowrap ${
+              className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider border active:scale-95 transition-all whitespace-nowrap ${
                 activeFilter === cat
-                  ? 'bg-[#00a63e] text-white border-[#00a63e] shadow-[0_4px_12px_rgba(0,166,62,0.25)]'
-                  : 'bg-white text-gray-600 border-gray-200 hover:border-[#00a63e]/40'
+                  ? 'bg-[#41A61D] text-white border-[#41A61D] shadow-md'
+                  : 'bg-white text-gray-600 border-gray-200'
               }`}
             >
               {cat}
@@ -67,7 +68,6 @@ const GalleryPage = () => {
 
       {/* STAGE 3: FLUID MEDIA SNAP GRID MASONRY */}
       <section className="w-full px-4 sm:px-6 lg:px-8 z-10 relative max-w-7xl mx-auto">
-        {/* If no items found fallback check */}
         {filteredItems.length === 0 ? (
           <div className="w-full text-center py-20 bg-white border border-gray-100 rounded-[2rem]">
             <p className="text-gray-400 text-sm font-bold">No media records found for this block.</p>
@@ -77,36 +77,38 @@ const GalleryPage = () => {
             {filteredItems.map((item) => (
               <div 
                 key={item.id}
-                className="group relative h-64 sm:h-72 rounded-[2rem] overflow-hidden border border-gray-200/60 shadow-sm bg-white transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(0,166,62,0.15)]"
+                className="relative h-64 sm:h-72 rounded-[2rem] overflow-hidden border border-gray-200 shadow-md bg-white"
               >
-                {/* Real High-Quality Responsive Image Asset Container */}
+                {/* Real High-Quality Responsive Image Asset Container - Removed group-hover scaling */}
                 <Image 
                   src={item.image} 
                   alt={item.title} 
                   fill 
                   quality={90}
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="object-cover"
                   unoptimized={true}
                 />
                 
                 {/* Gradient Shadow Overlay Mask for clear title contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-80 z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-90 z-10"></div>
                 
-                {/* Floating Meta Labels on top right edge */}
-                <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md border border-white/40 px-2.5 py-1 rounded-lg text-[9px] font-black text-gray-800 tracking-wider uppercase shadow-sm flex items-center gap-1 z-20">
-                  <FiCamera className="text-[#00a63e]" /> {item.category}
+                {/* Floating Meta Labels on top right edge - Icon color uses Primary #41A61D */}
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md border border-gray-100 px-2.5 py-1 rounded-lg text-[9px] font-black text-gray-800 tracking-wider uppercase shadow-sm flex items-center gap-1 z-20">
+                  <FiCamera className="text-[#41A61D]" /> {item.category}
                 </div>
 
                 {/* Bottom Core Description Details */}
                 <div className="absolute bottom-5 left-5 right-5 z-20 flex items-center justify-between">
                   <div className="flex flex-col pr-4">
-                    <span className="text-[10px] font-bold tracking-widest text-[#4ade80] uppercase">Bastarraj Field Log</span>
-                    <h3 className="text-base sm:text-lg font-black text-white tracking-tight mt-0.5 leading-tight group-hover:text-[#4ade80] transition-colors duration-300">
+                    {/* Highlighted context tag with Secondary Orange #E36911 */}
+                    <span className="text-[10px] font-bold tracking-widest text-[#E36911] uppercase">Bastarraj Field Log</span>
+                    <h3 className="text-base sm:text-lg font-black text-white tracking-tight mt-0.5 leading-tight">
                       {item.title}
                     </h3>
                   </div>
-                  <div className="w-8 h-8 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <FiCheckCircle className="text-sm" />
+                  {/* Kept indicator fully visible permanently for perfect touch tracking display profiles */}
+                  <div className="w-8 h-8 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center shrink-0">
+                    <FiCheckCircle className="text-sm text-[#41A61D]" />
                   </div>
                 </div>
               </div>
@@ -115,7 +117,7 @@ const GalleryPage = () => {
         )}
       </section>
 
-      {/* STAGE 4: IMMERSIVE CRYSTAL FOLIAGE BASE CANVAS (img2.webp) */}
+      {/* STAGE 4: IMMERSIVE CRYSTAL FOLIAGE BASE CANVAS */}
       <div className="absolute bottom-0 left-0 w-full h-[250px] md:h-[350px] z-0 pointer-events-none opacity-[0.25] image-render-crisp">
         <Image 
           src="/img2.webp" 

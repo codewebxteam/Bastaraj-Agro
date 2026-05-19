@@ -12,7 +12,7 @@ const HeroSection = () => {
     
     const rawMessage = `🌿 *Bastarraj Agro - New Portal Inquiry*\n` +
                        `--------------------------------------\n` +
-                       `*नमस्ते, मैं आपके औषधीय और कमर्शियल प्लांटेशन मॉडल से जुड़कर खेती को व्यापार बनाना चाहता हूँ। कृपया मुझे बुकिंग और प्रॉफिट की पूरी जानकारी साझा करें।*`;
+                       `*नमस्ते, मैं आपके औषधीय और कमर्शियल प्लांटेशन...*`;
                        
     const message = encodeURIComponent(rawMessage);
     return `https://wa.me/${phoneNumber}?text=${message}`;
@@ -22,7 +22,6 @@ const HeroSection = () => {
     <div className="relative w-full h-screen min-h-screen flex items-center justify-center lg:justify-end overflow-hidden bg-[#0a0f0d]">
       
       {/* 1. Full-Screen Background Image Layer */}
-      {/* FIXED: object-[-180px_center] shifts image viewport on small mobile to crop right side and show left assets clearly */}
       <div className="absolute inset-0 z-0">
         <Image 
           src="/hero-bg.webp" 
@@ -37,10 +36,10 @@ const HeroSection = () => {
       {/* 2. Ultra-Subtle Vignette */}
       <div className="absolute inset-0 z-1 bg-gradient-to-r from-transparent via-transparent to-black/60"></div>
 
-      {/* 3. Main Content Container - Right Aligned with Modern Spacing */}
+      {/* 3. Main Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center lg:justify-end mt-20 md:mt-0">
         
-        {/* PREMIUM GLASSMORPHISM CARD - SIZE REDUCED AND PUSHED RIGHT */}
+        {/* PREMIUM GLASSMORPHISM CARD */}
         <div className="max-w-lg p-8 md:p-10 rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex flex-col items-center text-center lg:items-start lg:text-left transition-all duration-500 hover:bg-white-[0.15] lg:mr-4">
           
           {/* Floating Trust Badge */}
@@ -49,10 +48,10 @@ const HeroSection = () => {
             <span className="text-gray-200 text-xs font-semibold tracking-wider uppercase">Trusted by 500+ Farmers</span>
           </div>
 
-          {/* Primary Headline - Light Vibrant Green (#1AFF00) */}
+          {/* Primary Headline - FIXED: Removed text-transparent and bg-clip-text. Using Solid #41A61D */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-5 drop-shadow-lg leading-tight tracking-tight">
             खेती में नवाचारी,<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1AFF00] to-[#55ff33]">
+            <span className="text-[#41A61D]">
               किसान बनेगा व्यापारी
             </span>
           </h1>
@@ -65,15 +64,14 @@ const HeroSection = () => {
           {/* Call to Action Container */}
           <div className="flex flex-col sm:flex-row gap-4 w-full">
             
-            {/* FIXED: Primary CTA wrapped inside Next.js routing wrapper to push to path directory seamlessly */}
+            {/* Primary CTA */}
             <Link href="/calculator" className="w-full sm:w-auto">
-              <button className="relative overflow-hidden group px-6 py-4 bg-[#1AFF00] text-gray-900 text-base sm:text-lg font-extrabold rounded-xl shadow-[0_0_20px_rgba(26,255,0,0.3)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(26,255,0,0.5)] w-full text-center">
-                <span className="relative z-10">प्रॉफिट कैलकुलेटर</span>
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
+              <button className="relative overflow-hidden group px-6 py-4 bg-[#41A61D] text-white text-base sm:text-lg font-extrabold rounded-xl shadow-[0_0_20px_rgba(65,166,29,0.3)] transition-all duration-300 hover:scale-[1.02] hover:bg-[#E36911] w-full text-center">
+                <span>प्रॉफिट कैलकुलेटर</span>
               </button>
             </Link>
             
-            {/* FIXED: Secondary CTA running automated redirect to specific whatsapp api window */}
+            {/* Secondary CTA */}
             <a 
               href={getWhatsAppLink()}
               target="_blank"
@@ -81,7 +79,7 @@ const HeroSection = () => {
               className="w-full sm:w-auto"
             >
               <button className="px-6 py-4 bg-white/5 border border-white/30 backdrop-blur-md hover:bg-white hover:text-black text-white text-base sm:text-lg font-bold rounded-xl shadow-lg transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 group w-full text-center">
-                <FaWhatsapp className="text-2xl text-[#1AFF00] group-hover:text-[#14cc00] transition-colors" />
+                <FaWhatsapp className="text-2xl text-[#41A61D] transition-colors" />
                 WhatsApp
               </button>
             </a>
