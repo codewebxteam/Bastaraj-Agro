@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'; 
-import { FiHome, FiTrendingUp, FiImage, FiInfo, FiLayers } from 'react-icons/fi';
+import { FiHome, FiTrendingUp, FiImage, FiInfo, FiLayers, FiPhoneCall } from 'react-icons/fi';
 
 const Header = () => {
   // State management for mobile bottom navigation visibility (100% Intact)
@@ -82,16 +82,19 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* Localization Toggle and Desktop Contact Action */}
-            <div className="flex items-center space-x-6">
-              {/* Light Theme Localization Toggle */}
-              {/* <div className="flex items-center bg-gray-100 border border-gray-200 rounded-full px-3 py-1 cursor-pointer hover:bg-gray-200 transition-colors">
-                <span className="text-sm font-extrabold text-[#00a63e]">EN</span>
-                <span className="mx-2 text-gray-300">|</span>
-                <span className="text-sm font-bold text-gray-600">HI</span>
-              </div> */}
+            {/* Desktop Action & Mobile Call Layout Context */}
+            <div className="flex items-center">
               
-              {/* UPDATED: Changed from contact section scroll anchor to direct tel protocol triggering call window dialer directly */}
+              {/* FIXED: Removed the Language Toggle. Shifted Call Icon cleanly to the right side with automated dialer prompt link */}
+              <a 
+                href="tel:+917999618106" 
+                className="md:hidden flex items-center justify-center w-11 h-11 rounded-full bg-[#1AFF00] text-gray-900 shadow-md active:scale-90 transition-transform duration-200 ml-auto"
+                aria-label="Call Now"
+              >
+                <FiPhoneCall className="text-lg animate-pulse" />
+              </a>
+              
+              {/* Desktop Call Now Trigger Button */}
               <a 
                 href="tel:+919301381806" 
                 className="hidden md:flex bg-[#1AFF00] hover:bg-gradient-to-r hover:from-[#1AFF00] hover:to-[#55ff33] text-gray-900 px-6 py-2 rounded-full font-extrabold hover:shadow-[0_0_20px_rgba(26,255,0,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 shadow-md text-sm"
