@@ -8,7 +8,7 @@ const ProfitCalculator = () => {
   // 1. Data-Driven Configuration (Logic kept 100% exact)
   const plantData: Record<string, { name: string; hindi: string; multipliers: number[] }> = {
     Mahogany: { name: 'Mahogany', hindi: '(महोगनी)', multipliers: [50000, 110000, 250000] },
-    "Malabar Neem": { name: 'Malabar Neem', hindi: '(मालाबार नीम)', multipliers: [30000, 80000, 150000] }, 
+    "Malabar Neem": { name: 'Malabar Neem', hindi: '(मालाबार नीम)', multipliers: [1200, 2400, 3600] }, 
     Sandalwood: { name: 'Sandalwood', hindi: '(चंदन)', multipliers: [100000, 250000, 600000] }, 
   };
 

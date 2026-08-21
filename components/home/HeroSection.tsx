@@ -219,7 +219,7 @@ const HeroSection = () => {
                     variants={descVariants}
                     className="text-base sm:text-lg text-[#C6D1CC] mb-10 leading-relaxed font-medium tracking-wide max-w-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"
                   >
-                    अब खेती सिर्फ गुज़ारा नहीं, बल्कि बनेगी कमाई का प्राकृतिक जरिया। हमारे औषधीय और कमर्शियल प्लांटेशनध मॉडल से जुड़ें और अपनी आदमनी को नई ऊंचाईयों तक ले जाएं।
+                    परंपरागत खेती से आगे बढ़कर, औषधीय एवं वाणिज्यिक प्लांटेशन के माध्यम से कृषि को एक स्थायी और लाभदायक व्यवसाय में बदलें।
                   </motion.p>
                 ) : (
                   <motion.p 

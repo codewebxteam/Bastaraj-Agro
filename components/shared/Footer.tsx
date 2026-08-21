@@ -74,7 +74,7 @@ const Footer = () => {
             
             <div className="flex items-start gap-2.5 text-[#8EA39A] text-sm font-medium hover:text-white transition-colors">
               <FiMapPin className="text-[#41A61D] shrink-0 mt-0.5 text-base" />
-              <span>Rameshwaram Colony, Kenker Chhatishgarh</span>
+              <span>BARDEBHATA near shiv shakti mandir bazar road kanker</span>
             </div>
 
             {/* FIXED: Phone anchors bound with dialable structural tel nodes */}
