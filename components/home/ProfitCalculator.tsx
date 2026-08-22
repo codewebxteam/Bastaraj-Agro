@@ -5,20 +5,46 @@ import Image from 'next/image';
 import { Target, Leaf, IndianRupee, Calendar } from 'lucide-react'; 
 
 const ProfitCalculator = () => {
-  // 1. Data-Driven Configuration (Logic kept 100% exact)
-  const plantData: Record<string, { name: string; hindi: string; multipliers: number[] }> = {
-    Mahogany: { name: 'Mahogany', hindi: '(महोगनी)', multipliers: [50000, 110000, 250000] },
-    "Malabar Neem": { name: 'Malabar Neem', hindi: '(मालाबार नीम)', multipliers: [1200, 2400, 3600] }, 
-    Sandalwood: { name: 'Sandalwood', hindi: '(चंदन)', multipliers: [100000, 250000, 600000] }, 
+  // 1. Data-Driven Configuration
+  type Milestone = { label: string; mult: number; tag: string; premium?: boolean };
+  const plantData: Record<string, { name: string; hindi: string; plantsPerAcre: number; milestones: Milestone[] }> = {
+    Mahogany: { 
+      name: 'Mahogany', hindi: '(महोगनी)', plantsPerAcre: 700,
+      milestones: [
+        { label: 'Single Cutting Yield', mult: 20000, tag: 'Maximum Maturity', premium: true }
+      ]
+    },
+    "Malabar Neem": { 
+      name: 'Malabar Neem', hindi: '(मालाबार नीम)', plantsPerAcre: 700,
+      milestones: [
+        { label: '1st Cutting', mult: 3000, tag: 'Early Liquidity' },
+        { label: '2nd Cutting', mult: 6000, tag: 'Growth Phase' },
+        { label: '3rd Cutting', mult: 6000, tag: 'Maximum Maturity', premium: true }
+      ]
+    }, 
+    Agarwood: { 
+      name: 'Agarwood', hindi: '(अगरवुड)', plantsPerAcre: 440,
+      milestones: [
+        { label: 'Harvest Yield', mult: 500000, tag: 'Maximum Maturity', premium: true }
+      ]
+    },
+    Sandalwood: { 
+      name: 'Sandalwood', hindi: '(चंदन)', plantsPerAcre: 500,
+      milestones: [
+        { label: '4 Year Yield', mult: 100000, tag: 'Early Liquidity' },
+        { label: '8 Year Yield', mult: 250000, tag: 'Growth Phase' },
+        { label: '12 Year Yield', mult: 600000, tag: 'Maximum Maturity', premium: true }
+      ]
+    }
   };
 
   // State management
   const [plantKey, setPlantKey] = useState('Mahogany');
-  const [quantity, setQuantity] = useState(500);
+  const [quantity, setQuantity] = useState(700);
 
   // Derived calculations
-  const acres = (quantity / 500).toFixed(1);
   const selectedPlant = plantData[plantKey];
+  const acres = (quantity / selectedPlant.plantsPerAcre).toFixed(1);
 
   // Helper function to format currency in Indian style (₹)
   const formatCurrency = (amount: number) => {
@@ -30,10 +56,11 @@ const ProfitCalculator = () => {
   };
 
   // Helper percentage for dynamic visual bars in the matrix
-  const maxPossibleYield = 2000 * 600000; // Max possible in calculation
-  const currentYieldPercent = (yearsIndex: number) => {
-    const currentYield = quantity * selectedPlant.multipliers[yearsIndex];
-    return Math.min(Math.max((currentYield / maxPossibleYield) * 100, 8), 100);
+  const currentYieldPercent = (milestoneIndex: number) => {
+    const currentYield = quantity * selectedPlant.milestones[milestoneIndex].mult;
+    const maxMilestoneMult = Math.max(...selectedPlant.milestones.map(m => m.mult));
+    const maxPossibleYield = quantity * maxMilestoneMult;
+    return Math.min(Math.max((currentYield / (maxPossibleYield || 1)) * 100, 8), 100);
   };
 
   return (
@@ -133,11 +160,7 @@ const ProfitCalculator = () => {
             </div>
 
             {/* Dynamic Financial Iterations */}
-            {[
-              { label: '4 Year Yield', mult: selectedPlant.multipliers[0], tag: 'Early Liquidity' },
-              { label: '8 Year Yield', mult: selectedPlant.multipliers[1], tag: 'Growth Phase' },
-              { label: '12 Year Yield', mult: selectedPlant.multipliers[2], tag: 'Maximum Maturity', premium: true },
-            ].map((row, index) => (
+            {selectedPlant.milestones.map((row, index) => (
               <div 
                 key={index}
                 className={`grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-0 px-6 sm:px-8 py-6 items-center border-b border-[#2C4538] ${

@@ -9,6 +9,7 @@ const ProductInventory = dynamic(() => import('@/components/home/ProductInventor
 const Testimonials = dynamic(() => import('@/components/home/Testimonials'));
 const OrderForm = dynamic(() => import('@/components/home/OrderForm'));
 const ProfitCalculator = dynamic(() => import('@/components/home/ProfitCalculator'));
+const GallerySection = dynamic(() => import('@/components/home/GallerySection'));
 
 export const metadata: Metadata = {
   title: 'Home | Swarnim Agro | Premium Commercial & Medicinal Plantation',
@@ -49,17 +50,22 @@ export default function Home() {
         <ProductInventory />
       </section>
 
-      {/* 5. Testimonials Section: User reviews and social proof build */}
+      {/* 5. Media & Video Gallery */}
+      <section id="gallery" className="w-full">
+        <GallerySection />
+      </section>
+
+      {/* 6. Testimonials Section: User reviews and social proof build */}
       <section id="testimonials" className="w-full">
         <Testimonials />
       </section>
 
-      {/* 6. Order Form: Dynamic Lead capture mechanism */}
+      {/* 7. Order Form: Dynamic Lead capture mechanism */}
       <section id="order-form" className="w-full">
         <OrderForm />
       </section>
 
-      {/* 7. Interactive Profit Calculator: Shifting to the very bottom to lock deals */}
+      {/* 8. Interactive Profit Calculator: Shifting to the very bottom to lock deals */}
       {/* Removed bg-white and wrapper padding. The component itself will handle the dark theme UI. */}
       <section id="calculator" className="w-full pb-20">
         <ProfitCalculator />
